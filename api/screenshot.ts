@@ -93,13 +93,13 @@ export default async (req: any, res: any) => {
     console.log('url', url);
 
     await page.goto(url);
-
+    console.log('start ')
     const screenshotOptions = {
         fullPage: true,
         type: 'png',
     };
     const screenshot = await page.screenshot(screenshotOptions);
-
+    console.log(screenshot);
     await browser.close();
     // Set the s-maxage property which caches the images then on the Vercel edge
     res.setHeader('Cache-Control', 's-maxage=10, stale-while-revalidate');
